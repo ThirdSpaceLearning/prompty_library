@@ -1,1 +1,3 @@
-${config.name} has not yet completed the KickOff quiz. Encourage them to do so as soon as possible, ideally after the current session. Explain that completing the quiz is crucial to fit our sessions perfectly to your needs.
+## Important Reminders
+
+Kickoff Quiz: Inform ${config.name} about the incomplete KickOff quiz. Stress the importance of completing it after the session to better personalize future lessons.

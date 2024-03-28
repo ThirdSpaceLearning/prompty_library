@@ -1,0 +1,44 @@
+name: Markdown Tests
+
+on:
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  test_markdown_files:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - shell: pwsh
+        # Give an id to the step, so we can reference it later
+        id: check_file_changed
+        run: |
+          # Check whether a prompt definition has changed (excluding deletions)
+
+          # Diff HEAD with this PR's target branch
+          $baseRef = 'origin/${{ github.event.pull_request.base.ref }}'
+          $diff = git diff --name-only --diff-filter=d $baseRef HEAD
+
+          $SourceDiff = $diff | Where-Object { $_ -match '^education/learning-objectives/' }
+          $HasDiff = $SourceDiff.Length -gt 0
+
+          echo "md_changed=$HasDiff" >> $env:GITHUB_OUTPUT
+          echo "source_diff=$SourceDiff" >> $env:GITHUB_OUTPUT
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20' # Specify the Node.js version here
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests on each Markdown file
+        if: steps.check_file_changed.outputs.md_changed == 'True'
+        run: |
+          MARKDOWN_FILES_PATH="${{join(steps.check_file_changed.outputs.source_diff, ' ')}}" npm test || exit 1
+        shell: bash
