@@ -16,9 +16,14 @@ on:
 jobs:
   invoke_state_machine:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
 
       - name: Extract Branch Name
         id: branch_name
@@ -28,11 +33,11 @@ jobs:
           echo "AI_TUTOR_ID=${{ secrets.AI_TUTOR_ID }}" >> $GITHUB_ENV
           echo "NOW=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> $GITHUB_ENV
 
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          role-to-assume: arn:aws:iam::267739230747:role/nonprod-deployer
+          role-session-name: prompt-library-action
           aws-region: eu-west-1
       
       - name: AWS CLI v2
