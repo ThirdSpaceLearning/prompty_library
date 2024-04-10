@@ -1,0 +1,41 @@
+name: Create test session
+
+on:
+  workflow_dispatch:
+    inputs:
+      student_id:
+        description: 'Student ID'
+        required: true
+      school_id:
+        description: 'School ID'
+        required: true
+      lesson_id:
+        description: 'Lesson ID'
+        required: true
+
+jobs:
+  invoke_state_machine:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Extract Branch Name
+        id: branch_name
+        run: |
+          echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
+          echo "TEST_SESSION_STATE_MACHINE_ARN=${{ secrets.TEST_SESSION_STATE_MACHINE_ARN }}" >> $GITHUB_ENV
+          echo "AI_TUTOR_ID=${{ secrets.AI_TUTOR_ID }}" >> $GITHUB_ENV
+          echo "NOW=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> $GITHUB_ENV
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-1
+      
+      - name: AWS CLI v2
+        uses: imehedi/actions-awscli-v2@latest
+        with:
+          args: stepfunctions start-execution --state-machine-arn ${{ env.TEST_SESSION_STATE_MACHINE_ARN }} --input "{\"time\":\"${{ env.NOW }}\",\"number_of_students\":1,\"prompt_version\":\"${{ env.BRANCH_NAME }}\",\"tutor_id\":${{ env.AI_TUTOR_ID }},\"school_id\":${{ github.event.inputs.school_id }},\"student_ids\":[${{ github.event.inputs.student_id }}],\"lesson_ids\":[${{ github.event.inputs.lesson_id }}]}"
