@@ -12,6 +12,10 @@ on:
       lesson_id:
         description: 'Lesson ID'
         required: false
+      start_session:
+        description: 'Start the session'
+        required: false
+        default: 'yes'
 
 jobs:
   invoke_state_machine:
@@ -31,6 +35,7 @@ jobs:
           echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
           echo "TEST_SESSION_STATE_MACHINE_ARN=${{ secrets.TEST_SESSION_STATE_MACHINE_ARN }}" >> $GITHUB_ENV
           echo "AI_TUTOR_ID=${{ secrets.AI_TUTOR_ID }}" >> $GITHUB_ENV
+          echo "START_SESSION=${{ github.event.inputs.start_session == 'yes' }}" >> $GITHUB_ENV
           echo "NOW=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> $GITHUB_ENV
 
       - name: configure aws credentials
@@ -43,4 +48,4 @@ jobs:
       - name: AWS CLI v2
         uses: imehedi/actions-awscli-v2@latest
         with:
-          args: stepfunctions start-execution --state-machine-arn ${{ env.TEST_SESSION_STATE_MACHINE_ARN }} --input "{\"time\":\"${{ env.NOW }}\",\"number_of_students\":1,\"prompt_version\":\"${{ env.BRANCH_NAME }}\",\"tutor_id\":${{ env.AI_TUTOR_ID }},\"school_id\":${{ github.event.inputs.school_id }},\"student_ids\":[${{ github.event.inputs.student_id }}],\"lesson_ids\":[${{ github.event.inputs.lesson_id }}]}"
+          args: stepfunctions start-execution --state-machine-arn ${{ env.TEST_SESSION_STATE_MACHINE_ARN }} --input "{\"time\":\"${{ env.NOW }}\",\"number_of_students\":1,\"prompt_version\":\"${{ env.BRANCH_NAME }}\",\"start_session\":\"${{ env.START_SESSION }}\",\"tutor_id\":${{ env.AI_TUTOR_ID }},\"school_id\":${{ github.event.inputs.school_id }},\"student_ids\":[${{ github.event.inputs.student_id }}],\"lesson_ids\":[${{ github.event.inputs.lesson_id }}]}"
