@@ -48,4 +48,4 @@ jobs:
       - name: AWS CLI v2
         uses: imehedi/actions-awscli-v2@latest
         with:
-          args: stepfunctions start-execution --state-machine-arn ${{ env.TEST_SESSION_STATE_MACHINE_ARN }} --input "{\"time\":\"${{ env.NOW }}\",\"number_of_students\":1,\"prompt_version\":\"${{ env.BRANCH_NAME }}\",\"start_session\":\"${{ env.START_SESSION }}\",\"tutor_id\":${{ env.AI_TUTOR_ID }},\"school_id\":${{ github.event.inputs.school_id }},\"student_ids\":[${{ github.event.inputs.student_id }}],\"lesson_ids\":[${{ github.event.inputs.lesson_id }}]}"
+          args: stepfunctions start-execution --state-machine-arn ${{ env.TEST_SESSION_STATE_MACHINE_ARN }} --input "{\"time\":\"${{ env.NOW }}\",\"number_of_students\":1,\"prompt_version\":\"${{ env.BRANCH_NAME }}\",\"start_session\":${{ env.START_SESSION }},\"tutor_id\":${{ env.AI_TUTOR_ID }},\"school_id\":${{ github.event.inputs.school_id }},\"student_ids\":[${{ github.event.inputs.student_id }}],\"lesson_ids\":[${{ github.event.inputs.lesson_id }}]}"
