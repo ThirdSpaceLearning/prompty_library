@@ -11,7 +11,7 @@ on:
         required: true
       lesson_id:
         description: 'Lesson ID'
-        required: true
+        required: false
 
 jobs:
   invoke_state_machine:
