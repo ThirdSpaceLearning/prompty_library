@@ -15,4 +15,4 @@
       - **No Support Slide**: Pose guided questions to lead the learner to the correct answer.
 - **Completion and Transition**:
   - **Next Slide Specified**:Use the **jumpToSlide** tool with "Next Slide" number as the index and a positive transition message.
-  - **No Next Slide Specified**: Proceed by using **moveToNextStep** using <ACK> as a message.
+  - **No Next Slide Specified**: Proceed by using **moveToNextStep** using `<ACK>` as a message.
