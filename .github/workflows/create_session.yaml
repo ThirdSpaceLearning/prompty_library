@@ -51,8 +51,6 @@ jobs:
           result=$(aws stepfunctions start-execution --state-machine-arn ${{ env.TEST_SESSION_STATE_MACHINE_ARN }} --input "{\"time\":\"${{ env.NOW }}\",\"number_of_students\":1,\"prompt_version\":\"${{ env.BRANCH_NAME }}\",\"start_session\":\"${{ env.START_SESSION }}\",\"tutor_id\":${{ env.AI_TUTOR_ID }},\"school_id\":${{ github.event.inputs.school_id }},\"student_ids\":[${{ github.event.inputs.student_id }}],\"lesson_ids\":[${{ github.event.inputs.lesson_id }}]}")
           executionArn=$(echo $result | jq -r '.executionArn')
           echo "EXECUTION_ARN=$executionArn" >> $GITHUB_ENV
-          echo "::set-output name=executionArn::$executionArn"
-
       - name: Wait for Execution Result
         run: |
           while true; do
@@ -60,16 +58,24 @@ jobs:
             status=$(echo $executionResult | jq -r '.status')
             if [[ $status == "SUCCEEDED" ]]; then
               echo "Execution succeeded"
-              output=$(echo $executionResult | jq -r '.output[0].session.id')
-              echo "::set-output name=sessionId::$output"
+              output=$(echo $executionResult | jq -r '.output')
+              sessionOutput=$(echo $output | jq '.[0].session')
+              echo "Session Output: $sessionOutput"
+              SUMMARY=$'# Session Created\n```\n'"$sessionOutput"$'\n```'
+              echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
+
               break
             elif [[ $status == "FAILED" ]]; then
               echo "Execution failed"
-              output=$(echo $executionResult | jq -r '.cause')
-              echo "::set-output name=executionError::$output"
+              errorInfo=$(echo $executionResult | jq -r '.cause')
+              
+              SUMMARY=$'# Error\n```\n'"$errorInfo"$'\n```'
+              echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
+
               exit 1
             else
               echo "Waiting for execution to complete..."
               sleep 5
           fi
           done
+        
