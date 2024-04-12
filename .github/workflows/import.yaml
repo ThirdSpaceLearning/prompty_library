@@ -1,4 +1,4 @@
-name: Run Import Script and Commit Changes
+name: Import a learning objective
 on:
   workflow_dispatch:
     inputs:
