@@ -102,6 +102,15 @@ process.env.MARKDOWN_FILES_PATH.split(" ").forEach(filePath => {
             }
           });
 
+          test(`Has an optional "Write:" tag`, () => {
+            if (stepContent.includes('(Write:')) {
+              const visualAidFormat = /\(Write: [^@]+\s@\s.*\)/;
+              expect(visualAidFormat.test(stepContent)).toBe(true);
+            } else {
+              expect(true).toBe(true); // Pass if no Visual Aid tag is present
+            }
+          });
+
           test(`Has an optional "Correct Answer:" tag`, () => {
             if (stepContent.includes('(Correct Answer:')) {
               const correctAnswerFormat = /\(Correct Answer: .+\)/;
@@ -145,7 +154,7 @@ process.env.MARKDOWN_FILES_PATH.split(" ").forEach(filePath => {
 
             const cleanedTags = potentialTags.map(tag => tag.slice(1, -1) + ':');
 
-            const expectedTags = ['Visual Aid:', 'Correct Answer:', 'Support Slide:', 'Next Slide:', 'Support Question:'];
+            const expectedTags = ['Visual Aid:', 'Correct Answer:', 'Support Slide:', 'Next Slide:', 'Support Question:', 'Write:'];
             
             const unexpectedTags = cleanedTags.filter(tag => !expectedTags.includes(tag.trim()));
 
