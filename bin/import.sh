@@ -7,7 +7,7 @@ if [ "$#" -ne 1 ]; then
 fi
 
 ID="$1"
-URL="https://beta-curriculum-cms-api.thirdspacelearning.com/api/public/learning_objectives/${ID}/slides"
+URL="https://curriculum-cms-api.thirdspacelearning.com/api/public/learning_objectives/${ID}/slides"
 
 # Fetch data
 DATA=$(curl -s "$URL")
