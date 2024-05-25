@@ -120,6 +120,15 @@ process.env.MARKDOWN_FILES_PATH.split(" ").forEach(filePath => {
             }
           });
 
+          test(`Has an optional "Common Misconceptions:" tag`, () => {
+            if (stepContent.includes('(Common Misconceptions:')) {
+              const correctAnswerFormat = /\(Common Misconceptions: .+\)/;
+              expect(correctAnswerFormat.test(stepContent)).toBe(true);
+            } else {
+              expect(true).toBe(true); // Pass if no Correct Answer tag is present
+            }
+          });
+
           test(`Has an optional "Support Slide: tag":`, () => {
             if (stepContent.includes('(Support Slide:')) {
               const supportSlideFormat = /\(Support Slide: \d+\)/;
@@ -154,7 +163,7 @@ process.env.MARKDOWN_FILES_PATH.split(" ").forEach(filePath => {
 
             const cleanedTags = potentialTags.map(tag => tag.slice(1, -1) + ':');
 
-            const expectedTags = ['Visual Aid:', 'Correct Answer:', 'Support Slide:', 'Next Slide:', 'Support Question:', 'Write:'];
+            const expectedTags = ['Visual Aid:', 'Correct Answer:', 'Common Misconceptions:', 'Support Slide:', 'Next Slide:', 'Support Question:', 'Write:'];
             
             const unexpectedTags = cleanedTags.filter(tag => !expectedTags.includes(tag.trim()));
 
