@@ -36,7 +36,8 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-
+      - name: Setup TogetherAI Key
+        run: echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> $GITHUB_ENV
       - name: Run tests on each Markdown file
         if: steps.check_file_changed.outputs.md_changed == 'True'
         run: |
