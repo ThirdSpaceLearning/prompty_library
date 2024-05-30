@@ -1,9 +1,15 @@
 // file: markdownParser.test.js
 import fs from 'fs';
+import { glob } from 'glob';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import markdownlint from 'markdownlint';
 import MarkdownIt from 'markdown-it';
+import './utility/llmMatcher'
 
 const md = new MarkdownIt();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Function to count the level-2 headers in a Markdown string
 const countLevel2Headers = (markdownContent) => {
@@ -37,8 +43,15 @@ const steps = (markdownContent) => {
     .map(step => step.replace(/^## Step \d+\n/, '').trim());
 };
 
+let filesToProcess = process.env.MARKDOWN_FILES_PATH.split(" ");
+if (filesToProcess[0] === "all") {
+  const directoryPath = path.join(__dirname, 'education/learning-objectives');
+  filesToProcess = glob.sync(`${directoryPath}/**/*.md`);
+}
+
+console.log(filesToProcess);
 // Load the Markdown content from a file
-process.env.MARKDOWN_FILES_PATH.split(" ").forEach(filePath => {
+filesToProcess.forEach(filePath => {
   if (!filePath) {
     throw new Error('MARKDOWN_FILES_PATH environment variable is not set.');
   }
@@ -93,68 +106,58 @@ process.env.MARKDOWN_FILES_PATH.split(" ").forEach(filePath => {
             expect(stepContent.startsWith('Say:')).toBe(true);
           });
 
-          test(`Has an optional "Visual Aid:" tag`, () => {
-            if (stepContent.includes('(Visual Aid:')) {
+          if (stepContent.includes('(Visual Aid:')) {
+            test(`The "Visual Aid:" tag is in the right format`, () => {
               const visualAidFormat = /\(Visual Aid: .+\)/;
               expect(visualAidFormat.test(stepContent)).toBe(true);
-            } else {
-              expect(true).toBe(true); // Pass if no Visual Aid tag is present
-            }
-          });
+            })
+          };
 
-          test(`Has an optional "Write:" tag`, () => {
-            if (stepContent.includes('(Write:')) {
+          if (stepContent.includes('(Write:')) {
+            test(`The "Write:" tag is in the right format`, () => {
               const visualAidFormat = /\(Write: [^@]+\s@\s.*\)/;
               expect(visualAidFormat.test(stepContent)).toBe(true);
-            } else {
-              expect(true).toBe(true); // Pass if no Visual Aid tag is present
-            }
-          });
+            })
+          };
 
-          test(`Has an optional "Correct Answer:" tag`, () => {
-            if (stepContent.includes('(Correct Answer:')) {
+          if (stepContent.includes('(Correct Answer:')) {
+            test(`The "Correct Answer:" tag is in the right format`, () => {
               const correctAnswerFormat = /\(Correct Answer: .+\)/;
               expect(correctAnswerFormat.test(stepContent)).toBe(true);
-            } else {
-              expect(true).toBe(true); // Pass if no Correct Answer tag is present
-            }
-          });
+            })
 
-          test(`Has an optional "Common Misconceptions:" tag`, () => {
-            if (stepContent.includes('(Common Misconceptions:')) {
+            test.concurrent(`The "Correct Answer:" tag includes an actual correct answer`, async () => {
+              await expect(stepContent).toHaveTheCorrectAnswer()
+            }, 30000)
+          };
+
+          if (stepContent.includes('(Common Misconceptions:')) {
+            test(`The "Common Misconceptions:" tag is in the right format`, () => {
               const correctAnswerFormat = /\(Common Misconceptions: .+\)/;
               expect(correctAnswerFormat.test(stepContent)).toBe(true);
-            } else {
-              expect(true).toBe(true); // Pass if no Correct Answer tag is present
-            }
-          });
+            })
+          }
 
-          test(`Has an optional "Support Slide: tag":`, () => {
-            if (stepContent.includes('(Support Slide:')) {
+          if (stepContent.includes('(Support Slide:')) {
+            test(`The "Support Slide:" tag is in the right format`, () => {
               const supportSlideFormat = /\(Support Slide: \d+\)/;
               expect(supportSlideFormat.test(stepContent)).toBe(true);
-            } else {
-              expect(true).toBe(true); // Pass if no Support Slide tag is present
-            }
-          });
+            })
+          };
 
-          test(`Has an optional "Support Question: tag":`, () => {
-            if (stepContent.includes('(Support Question:')) {
+          if (stepContent.includes('(Support Question:')) {
+            test(`The "Support Question:" tag is in the right format:`, () => {
               const supportSlideFormat = /\(Support Question: .+\)/;
               expect(supportSlideFormat.test(stepContent)).toBe(true);
-            } else {
-              expect(true).toBe(true); // Pass if no Support Slide tag is present
-            }
-          });
+            })
+          };
 
-          test(`Has an optional "Next Slide: tag":`, () => {
-            if (stepContent.includes('(Next Slide:')) {
+          if (stepContent.includes('(Next Slide:')) {
+            test(`The "Next Slide:" tag is in the right format`, () => {
               const nextSlideFormat = /\(Next Slide: \d+\)/;
               expect(nextSlideFormat.test(stepContent)).toBe(true);
-            } else {
-              expect(true).toBe(true); // Pass if no Next Slide tag is present
-            }
-          });
+            })
+          };
 
           test('Contains no unexpected tags', () => {
             // Assume tags are enclosed in parentheses and follow the pattern: "(TagName: content)"
