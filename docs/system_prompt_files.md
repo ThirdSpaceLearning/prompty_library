@@ -35,7 +35,7 @@ This section of the prompt scaffolds the very first interaction in a session. Fo
 
 A few additional macro are available in this section:
 
-- ${config.programme.summary} - A summary of each learning session outcome.
+- ${config.programme.summary} - A summary of each learning session outcome. # WIll be implemented at a later stage
 - ${config.programme.statistics} - Counters for attended/not attended/remaining/total sessions.
 - ${config.programme.learningObjectives} - A list of lessons to be taught during the programme.
 - ${config.programme.lastSession.outcome} - The learning outcome for the last session.
