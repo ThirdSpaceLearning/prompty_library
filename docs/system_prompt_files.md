@@ -20,10 +20,10 @@ The system prompt is structured as following:
 
 Each of the following prompts can include the following macros:
 
-- ${config.name} - The student name
-- ${config.yearId} - The student year group
-- ${config.profile} - The student profile
-- ${config.teacherComment} - The student profile
+- ${config.name} - The student's name.
+- ${config.yearId} - The student year group.
+- ${config.workingLeval} - The student's working level.
+- ${config.teacherComment} - The comment left by the teacher for the tutor.
 
 ## Tutor Persona
 
@@ -35,10 +35,11 @@ This section of the prompt scaffolds the very first interaction in a session. Fo
 
 A few additional macro are available in this section:
 
-- ${config.programme.summary} - The full list of each session learning outcome.
-- ${config.programme.learningObjectives} - A list of lessons to be taought during the session.
+- ${config.programme.summary} - A summary of each learning session outcome.
+- ${config.programme.statistics} - Counters for attended/not attended/remaining/total sessions.
+- ${config.programme.learningObjectives} - A list of lessons to be taught during the programme.
 - ${config.programme.lastSession.outcome} - The learning outcome for the last session.
-- ${config.programme.lastSession.assessmentResult} - The result of the last lesson assessment
+- ${config.programme.lastSession.assessmentResult} - The result of the last lesson assessment and survey.
 
 ## General Tutoring Guidence
 
