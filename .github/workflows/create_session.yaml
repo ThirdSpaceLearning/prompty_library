@@ -1,0 +1,85 @@
+name: Create test session
+
+on:
+  workflow_dispatch:
+    inputs:
+      student_id:
+        description: 'Student ID'
+        required: true
+      school_id:
+        description: 'School ID'
+        required: true
+      lesson_id:
+        description: 'Lesson ID'
+        required: false
+      duration:
+        description: 'The session max duration'
+        required: true
+        default: '20'
+      start_session:
+        description: 'Start the session'
+        required: false
+        default: 'yes'
+
+jobs:
+  invoke_state_machine:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Extract Branch Name
+        id: branch_name
+        run: |
+          echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
+          echo "TEST_SESSION_STATE_MACHINE_ARN=${{ secrets.TEST_SESSION_STATE_MACHINE_ARN }}" >> $GITHUB_ENV
+          echo "AI_TUTOR_ID=${{ secrets.AI_TUTOR_ID }}" >> $GITHUB_ENV
+          echo "START_SESSION=${{ github.event.inputs.start_session == 'yes' }}" >> $GITHUB_ENV
+          echo "NOW=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> $GITHUB_ENV
+
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::267739230747:role/nonprod-deployer
+          role-session-name: prompt-library-action
+          aws-region: eu-west-1
+      
+      - name: Start Step Function Execution
+        id: start_execution
+        run: |
+          result=$(aws stepfunctions start-execution --state-machine-arn ${{ env.TEST_SESSION_STATE_MACHINE_ARN }} --input "{\"time\":\"${{ env.NOW }}\",\"number_of_students\":1,\"prompt_version\":\"${{ env.BRANCH_NAME }}\",\"start_session\":${{ env.START_SESSION }},\"tutor_id\":${{ env.AI_TUTOR_ID }},\"school_id\":${{ github.event.inputs.school_id }},\"duration\":${{ github.event.inputs.duration }},\"student_ids\":[${{ github.event.inputs.student_id }}],\"lesson_ids\":[\"${{ github.event.inputs.lesson_id }}\"]}")
+          executionArn=$(echo $result | jq -r '.executionArn')
+          echo "EXECUTION_ARN=$executionArn" >> $GITHUB_ENV
+      - name: Wait for Execution Result
+        run: |
+          while true; do
+            executionResult=$(aws stepfunctions describe-execution --execution-arn ${{ env.EXECUTION_ARN }})
+            status=$(echo $executionResult | jq -r '.status')
+            if [[ $status == "SUCCEEDED" ]]; then
+              echo "Execution succeeded"
+              output=$(echo $executionResult | jq -r '.output')
+              sessionOutput=$(echo $output | jq '.[0].session')
+              echo "Session Output: $sessionOutput"
+              SUMMARY=$'# Session Created\n```\n'"$sessionOutput"$'\n```'
+              echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
+
+              break
+            elif [[ $status == "FAILED" ]]; then
+              echo "Execution failed"
+              errorInfo=$(echo $executionResult | jq -r '.cause')
+              
+              SUMMARY=$'# Error\n```\n'"$errorInfo"$'\n```'
+              echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
+
+              exit 1
+            else
+              echo "Waiting for execution to complete..."
+              sleep 5
+          fi
+          done
+        

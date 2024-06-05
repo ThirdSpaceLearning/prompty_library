@@ -1,0 +1,22 @@
+name: Update version
+on:
+  workflow_dispatch
+
+jobs:
+  update_and_commit:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Git config
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+
+
+      
+    - name: Commit Files
+      run: |
+        git rebase develop
+        git push --force

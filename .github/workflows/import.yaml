@@ -1,0 +1,30 @@
+name: Import a learning objective
+on:
+  workflow_dispatch:
+    inputs:
+      learning_objective_id:
+        description: 'Learning Objective ID'
+        required: true
+        default: ''
+
+jobs:
+  import_and_commit:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Git config
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+
+
+    - name: Run Import Script
+      run: ./bin/import.sh ${{ github.event.inputs.learning_objective_id }}
+      
+    - name: Commit Files
+      run: |
+        git add .
+        git commit -m "Imported files for Learning Objective ID ${{ github.event.inputs.learning_objective_id }}" || echo "No changes to commit"
+        git push
