@@ -52,6 +52,12 @@ LLMs are not great at Maths. Even the most capable LLMs struggle with simple que
 
 Example: `(Correct Answer: 0.05)`
 
+### Correct Idea
+
+Sometimes we need to check if the student's answer aligns with the main idea of what we want the tutor to consider. In this case we can't use the `Correct Answer` tag, because the check is too strict (0.2 is different from 0.02). This tag is used to implement a broad check rather than an exact match.
+
+Example: `(Correct Idea: Any positive number)`
+
 ### Common Misconceptions
 
 For the same reason we are stating the Correct Answer, sometimes, having the Common Misconception can help the LLM to avoid hallucinations. It's important to notice that LLMs work with tokens, not with numbers, it means the tokens for 0.5 (`[15, 13, 20]`) and 0.05 (`[15, 13, 2304]`) are very close and can lead, sporadicly to misinterpret a right answer for a wrong answer. The tag is optional, and it should be used only if LLM really struggle to indentify an answer as correct or incorrect.
