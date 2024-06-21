@@ -1,0 +1,34 @@
+[
+  {
+    "Ask": "In this lesson, we'll learn how to find the value of each digit in numbers with up to two decimal places. This will help you understand and work with decimals, like handling money and measurements. By the end, you'll feel more confident reading, writing, and understanding decimal values. Let's start with the question on the screen: What is the value of the digit 2 in this number?",
+    "Visual Aid": "A question asking to write the value of the digit 2 in the number 35.28. The 2 is underlined.",
+    "Correct Answers": [
+      {
+        "value": "0.2",
+        "comment": "accepts also 2 tenths",
+        "component": {
+          "name": "LG",
+          "position": {"top": 518, "left": 237},
+          "size": {"width": 97, "height": 48},
+          "type": "text"
+        }
+      }
+    ]
+  },
+  {
+    "Ask": "Give the prior learning question a go now. Please use the circle tool and circle the greatest fraction.",
+    "Visual Aid": "A question asking to decide if seven tenths or 6 hundreths is bigger",
+    "Correct Answers": [
+      {
+        "value": "7/10",
+        "comment": "accepts also seven out of ten, seven over ten, seven tenths",
+        "component": {
+          "name": "PL_1",
+          "position": {"top": 416, "left": 656},
+          "size": {"width": 49, "height": 93},
+          "type": "readonly"
+        }
+      }
+    ]
+  }
+]

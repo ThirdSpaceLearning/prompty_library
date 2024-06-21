@@ -1,0 +1,57 @@
+[
+  {
+    "Ask": "In this 'let's learn' section, we will explore the position of digits in decimals and what this tells us about their values or how much they are worth. Please write the value of the blue counters as a decimal number?",
+    "Visual Aid": "2 blue counters of one tenth each and 4 green counters of one hundredth each",
+    "Correct Answers": [
+      {
+        "value": "0.2",
+        "comment": "accepts also 2 tenths",
+        "component": {
+          "name": "LL_a_1",
+          "position": {"top": 259, "left": 347},
+          "size": {"width": 142, "height": 48},
+          "type": "text"
+        }
+      }
+    ]
+  },
+  {
+    "Ask": "Now can you write what the value is of the green counters as a decimal?",
+    "Visual Aid": "2 blue counters of one tenth each and 4 green counters of one hundredth each",
+    "Correct Answers": [
+      {
+        "value": "0.04",
+        "comment": "also accepts 4 hundredtsh",
+        "component": {
+          "name": "LL_a_2",
+          "position": {"top": 480, "left": 347},
+          "size": {"width": 142, "height": 48},
+          "type": "text"
+        } 
+      }
+    ]
+  },
+  {
+    "Ask": "Could you please explain whether 0.2 or 0.04 is bigger and why?",
+    "Correct Idea": "0.2 is bigger because when we divide a whole into hundredths the size of each piece is ten times smaller than if we divide by ten. This makes 2 tenths actually equal to 20 hundredths so 0.2 is bigger than 0.04 which is just 4 hundredths"
+  },
+  {
+    "Ask": "Now for question b, please write the decimal number represented by both blue and green counters above.",
+    "Visual Aid": "2 blue counters of one tenth each and 4 green counters of one hundredth each",
+    "Correct Answers": [
+      {
+        "value": "0.24",
+        "comment": "also accepts zero point two four",
+        "component": {
+          "name": "LL_b_1",
+          "position": {"top": 457, "left": 551},
+          "size": {"width": 142, "height": 48},
+          "type": "text"
+        }
+      }
+    ]
+  },
+  {
+    "Say": "When reading decimal numbers, we pronounce each digit after the decimal point individually. Therefore, instead of saying 'zero point twenty-four,' the correct way to read it is 'zero point two four.' Please practice reading decimals correctly in this lesson."
+  }
+]
