@@ -1,28 +1,39 @@
-
-
 [
   {
     "Ask": "Now its your turn for a similar question. Please say this number in the place value chart out loud?",
     "Visual Aid": "The place value chart shows the number 81.27",
+    "Support Questions": [],
+    "Write": [],
+    "Highlight": [],
     "Correct Answers": [
       {
-        "value": "eighty one point two seven",
-        "comment": ""
+        "value": "eighty one point two seven.",
+        "comment": null,
+        "component": null
       }
     ]
   },
   {
     "Ask": "For question a, write down the digit in the tens column and then what its value is.",
     "Visual Aid": "A question asking for the digit and value of the tens in the  number 81.27",
+    "Support Questions": [],
+    "Write": [],
+    "Highlight": [],
     "Correct Answers": [
       {
         "value": "8",
         "comment": "as a digit",
         "component": {
           "name": "YT_a_1{1}",
-          "position": {"top": 349, "left": 867},
-          "size": {"width": 42, "height": 48},
-          "type": "text"
+          "size": {
+            "width": 42,
+            "height": 48
+          },
+          "position": {
+            "top": 349,
+            "left": 867
+          },
+          "component_type": "text"
         }
       },
       {
@@ -30,9 +41,15 @@
         "comment": "as a value",
         "component": {
           "name": "YT_a_1{2}",
-          "position": {"top": 397, "left": 743},
-          "size": {"width": 75, "height": 48},
-          "type": "text"
+          "size": {
+            "width": 75,
+            "height": 48
+          },
+          "position": {
+            "top": 397,
+            "left": 743
+          },
+          "component_type": "text"
         }
       }
     ]
@@ -40,15 +57,24 @@
   {
     "Ask": "For b which digit is in the tenths and what is its value?",
     "Visual Aid": "A question asking for the digit and value of the tenths in the  number 81.27",
+    "Support Questions": [],
+    "Write": [],
+    "Highlight": [],
     "Correct Answers": [
       {
         "value": "2",
         "comment": "as a digit",
         "component": {
           "name": "YT_b_1{1}",
-          "position": {"top": 481, "left": 888},
-          "size": {"width": 42, "height": 48},
-          "type": "text"
+          "size": {
+            "width": 42,
+            "height": 48
+          },
+          "position": {
+            "top": 481,
+            "left": 888
+          },
+          "component_type": "text"
         }
       },
       {
@@ -56,9 +82,15 @@
         "comment": "as a value",
         "component": {
           "name": "YT_b_1{2}",
-          "position": {"top": 518, "left": 748},
-          "size": {"width": 42, "height": 48},
-          "type": "text"
+          "size": {
+            "width": 42,
+            "height": 48
+          },
+          "position": {
+            "top": 518,
+            "left": 748
+          },
+          "component_type": "text"
         }
       }
     ]
@@ -66,15 +98,24 @@
   {
     "Ask": "Now please do C focusing on hundredths.",
     "Visual Aid": "A question asking for the digit and value of the hundredths in the  number 81.27",
+    "Support Questions": [],
+    "Write": [],
+    "Highlight": [],
     "Correct Answers": [
       {
         "value": "7",
         "comment": "as a digit",
         "component": {
           "name": "YT_c_1{1}",
-          "position": {"top": 626, "left": 932},
-          "size": {"width": 42, "height": 48},
-          "type": "text"
+          "size": {
+            "width": 42,
+            "height": 48
+          },
+          "position": {
+            "top": 626,
+            "left": 932
+          },
+          "component_type": "text"
         }
       },
       {
@@ -82,9 +123,15 @@
         "comment": "as a value",
         "component": {
           "name": "YT_c_1{2}",
-          "position": {"top": 675, "left": 743},
-          "size": {"width": 75, "height": 48},
-          "type": "text"
+          "size": {
+            "width": 75,
+            "height": 48
+          },
+          "position": {
+            "top": 675,
+            "left": 743
+          },
+          "component_type": "text"
         }
       }
     ]

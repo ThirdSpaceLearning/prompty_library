@@ -7,7 +7,7 @@ if [ "$#" -ne 1 ]; then
 fi
 
 ID="$1"
-URL="https://beta-curriculum-cms-api.thirdspacelearning.com/api/public/learning_objectives/${ID}/slides?fields=id,ai_tutor_notes&active=1"
+URL="https://beta-curriculum-cms-api.thirdspacelearning.com/api/public/learning_objectives/${ID}/slides?fields=id,json_tutor_notes&active=1"
 
 # Fetch data
 DATA=$(curl -s "$URL")
@@ -28,10 +28,10 @@ echo "$DATA" | jq -r '.[] | @base64' | while read -r OBJ; do
     DECODED=$(echo "$OBJ" | base64 --decode)
 
     SLIDE_ID=$(echo "$DECODED" | jq -r '.id')
-    TUTOR_NOTES=$(echo "$DECODED" | jq -r '.ai_tutor_notes')
+    TUTOR_NOTES=$(echo "$DECODED" | jq -r '.json_tutor_notes')
 
     # Save to a file
-    echo "$TUTOR_NOTES" > "./education/learning-objectives/${ID}/${SLIDE_ID}.md"
+    echo "$TUTOR_NOTES" > "./education/learning-objectives/${ID}/${SLIDE_ID}.json"
 done
 
 echo "Process completed."

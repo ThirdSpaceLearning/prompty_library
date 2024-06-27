@@ -2,62 +2,135 @@
   {
     "Ask": "I am going to work through a set of questions with you before you have a go on your own next. Please follow along with me and answer as we go so I can check your responses. First of all, could you read out loud the correct way of saying the number in the place value chart?",
     "Visual Aid": "A place value chart with 24.65",
+    "Support Questions": [],
+    "Write": [],
+    "Highlight": [],
     "Correct Answers": [
       {
         "value": "twenty four point six five",
-        "comment": ""
+        "comment": null,
+        "component": null
       }
     ]
   },
   {
     "Say": "For question a they are asking us to find the digit in the tens place so I will look at the orange tens column and write down the digit.",
-    "Write": {
+    "Visual Aid": "A number of 24.65 and question asking what the digit is in the tens place",
+    "Support Questions": [],
+    "Write": [
+      {
         "value": "2",
-        "target_component": "FM_a1"
-    }
+        "component": {
+          "name": "FM_a1",
+          "size": {
+            "width": 42,
+            "height": 48
+          },
+          "position": {
+            "top": 276,
+            "left": 395
+          },
+          "component_type": "text"
+        }
+      }
+    ],
+    "Highlight": [],
+    "Correct Answers": []
   },
   {
     "Ask": "Now, for its value, if there is a 2 in the tens column, it means 2 groups of ten. What is the total value? Please write it down.",
     "Visual Aid": "A number of 24.65 and question asking what the value is of the 2 in the tens column",
+    "Support Questions": [],
+    "Write": [],
+    "Highlight": [],
     "Correct Answers": [
       {
         "value": "20",
         "comment": "as a value",
         "component": {
           "name": "FM_a2",
-          "position": {"top": 289, "left": 324},
-          "size": {"width": 75, "height": 48},
-          "type": "text"
+          "size": {
+            "width": 75,
+            "height": 48
+          },
+          "position": {
+            "top": 324,
+            "left": 289
+          },
+          "component_type": "text"
         }
       }
     ]
   },
   {
     "Say": "For question b, we find the digit in the blue tenths column and we write that down.",
-    "Write": {
-      "value": "6",
-      "target_component": "FM_b1"
-    }
+    "Visual Aid": "A number of 24.65 and question asking what the digit is in the tenths place\n",
+    "Support Questions": [],
+    "Write": [
+      {
+        "value": "6",
+        "component": {
+          "name": "FM_b1",
+          "size": {
+            "width": 42,
+            "height": 48
+          },
+          "position": {
+            "top": 394,
+            "left": 379
+          },
+          "component_type": "text"
+        }
+      }
+    ],
+    "Highlight": [],
+    "Correct Answers": []
   },
   {
     "Say": "Now for its value, we have 6 lots of tenths. This means we have six tenths written as 0.6.",
-    "Write": {
-      "value": "0.6",
-      "target_component": "FM_b2"
-    }
+    "Visual Aid": "A number of 24.65 and question asking what the value is of the 6 in the tenths place",
+    "Support Questions": [],
+    "Write": [
+      {
+        "value": "0.6",
+        "component": {
+          "name": "FM_b{2}",
+          "size": {
+            "width": 75,
+            "height": 48
+          },
+          "position": {
+            "top": 483,
+            "left": 249
+          },
+          "component_type": "text"
+        }
+      }
+    ],
+    "Highlight": [],
+    "Correct Answers": []
   },
   {
     "Ask": "For question c, please write down the digit in the hundredths place and its value as a decimal.",
-    "Visual Aid": "A number of 24.65 and question asking what the digit is in the hundredths place and then what its value is.",
+    "Visual Aid": "A number of 24.65 and question asking what the digit is in the hundredths place and then what its value is. ",
+    "Support Questions": [],
+    "Write": [],
+    "Highlight": [],
     "Correct Answers": [
       {
         "value": "5",
         "comment": "as a digit",
         "component": {
           "name": "FM_c{1}",
-          "position": {"top": 572, "left": 423},
-          "size": {"width": 42, "height": 48},
-          "type": "text"
+          "size": {
+            "width": 42,
+            "height": 48
+          },
+          "position": {
+            "top": 572,
+            "left": 423
+          },
+          "component_type": "text"
         }
       },
       {
@@ -65,9 +138,15 @@
         "comment": "as a value",
         "component": {
           "name": "FM_c{2}",
-          "position": {"top": 657, "left": 246},
-          "size": {"width": 75, "height": 48},
-          "type": "text"
+          "size": {
+            "width": 75,
+            "height": 48
+          },
+          "position": {
+            "top": 657,
+            "left": 246
+          },
+          "component_type": "text"
         }
       }
     ]

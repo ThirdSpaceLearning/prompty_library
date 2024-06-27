@@ -2,15 +2,24 @@
   {
     "Ask": "Now we have reached the practice section. Please follow along with me question by question so I can check your progress. For question a, please write what the value is of 5 in the number?",
     "Visual Aid": "A question asking what the value of 5 is in the number 4.56",
+    "Support Questions": [],
+    "Write": [],
+    "Highlight": [],
     "Correct Answers": [
       {
         "value": "0.5",
-        "comment": "",
+        "comment": null,
         "component": {
           "name": "YD_a",
-          "position": {"top": 177, "left": 325},
-          "size": {"width": 75, "height": 48},
-          "type": "text"
+          "size": {
+            "width": 75,
+            "height": 48
+          },
+          "position": {
+            "top": 177,
+            "left": 325
+          },
+          "component_type": "text"
         }
       }
     ]
@@ -18,15 +27,24 @@
   {
     "Ask": "For b, what is the value of 9 in 6.39?",
     "Visual Aid": "Question b asks what the value of 9 is in the number 6.39",
+    "Support Questions": [],
+    "Write": [],
+    "Highlight": [],
     "Correct Answers": [
       {
         "value": "0.09",
-        "comment": "",
+        "comment": null,
         "component": {
           "name": "YD_b",
-          "position": {"top": 336, "left": 325},
-          "size": {"width": 75, "height": 48},
-          "type": "text"
+          "size": {
+            "width": 75,
+            "height": 48
+          },
+          "position": {
+            "top": 336,
+            "left": 325
+          },
+          "component_type": "text"
         }
       }
     ]
@@ -34,15 +52,24 @@
   {
     "Ask": "For question c, can you tell me how many tenths there are in this number?",
     "Visual Aid": "Question c asks how many tenths there are in the number 23.46",
+    "Support Questions": [],
+    "Write": [],
+    "Highlight": [],
     "Correct Answers": [
       {
         "value": "4",
-        "comment": "",
+        "comment": "also accepts 4 tenths",
         "component": {
           "name": "YD_c",
-          "position": {"top": 493, "left": 340},
-          "size": {"width": 75, "height": 48},
-          "type": "text"
+          "size": {
+            "width": 75,
+            "height": 48
+          },
+          "position": {
+            "top": 493,
+            "left": 340
+          },
+          "component_type": "text"
         }
       }
     ]
@@ -50,15 +77,24 @@
   {
     "Ask": "Finally, for question d, please answer how many hundredths are in the number.",
     "Visual Aid": "Question d ask for how many hundredths are in the number 235.1",
+    "Support Questions": [],
+    "Write": [],
+    "Highlight": [],
     "Correct Answers": [
       {
         "value": "0",
-        "comment": "accepts also 0 hundredths or zero or 0 or none",
+        "comment": "also accepts 0 hundredths or zero or none",
         "component": {
           "name": "YD_d",
-          "position": {"top": 646, "left": 340},
-          "size": {"width": 75, "height": 48},
-          "type": "text"
+          "size": {
+            "width": 75,
+            "height": 48
+          },
+          "position": {
+            "top": 646,
+            "left": 340
+          },
+          "component_type": "text"
         }
       }
     ]

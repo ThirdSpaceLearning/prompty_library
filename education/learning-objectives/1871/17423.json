@@ -2,34 +2,91 @@
   {
     "Ask": "For this challenge question, we are going to match statements to their correct decimals. Please could you say out loud the decimal that matches the first statement a.",
     "Visual Aid": "A sentence saying that the number has 2 in the hundredths place with the options of 1.68 and 5.32 and 6.2 and 61.4",
+    "Support Questions": [],
+    "Write": [],
+    "Highlight": [],
     "Correct Answers": [
       {
         "value": "5.32",
-        "comment": ""
+        "comment": null,
+        "component": {
+          "name": "GF_2",
+          "size": {
+            "width": 105,
+            "height": 47
+          },
+          "position": {
+            "top": 541,
+            "left": 397
+          },
+          "component_type": "readonly"
+        }
       }
     ]
   },
   {
     "Ask": "Now which decimals match the statement in b.",
-    "Visual Aid": "A sentence saying that the number has 2 in the hundredths place with the options of 1.68 and 5.32 and 6.2 and 61.4",
+    "Visual Aid": "A sentence saying that the number has no hundredths with the options of 1.68 and 5.32 and 6.2 and 61.4",
+    "Support Questions": [],
+    "Write": [],
+    "Highlight": [],
     "Correct Answers": [
       {
         "value": "6.2",
-        "comment": ""
+        "comment": null,
+        "component": {
+          "name": "GF_3",
+          "size": {
+            "width": 105,
+            "height": 47
+          },
+          "position": {
+            "top": 541,
+            "left": 552
+          },
+          "component_type": "readonly"
+        }
       },
       {
         "value": "61.4",
-        "comment": ""
+        "comment": null,
+        "component": {
+          "name": "GF_4",
+          "size": {
+            "width": 105,
+            "height": 47
+          },
+          "position": {
+            "top": 541,
+            "left": 707
+          },
+          "component_type": "readonly"
+        }
       }
     ]
   },
   {
     "Ask": "Which decimal matches statement c?",
-    "Visual Aid": "A sentence saying that the number has 2 in the hundredths place with the options of 1.68 and 5.32 and 6.2 and 61.4",
+    "Visual Aid": "A sentence saying that the number has 6 in the tenths place with the options of 1.68, 5.32, 6.2, and 61.4",
+    "Support Questions": [],
+    "Write": [],
+    "Highlight": [],
     "Correct Answers": [
       {
         "value": "1.68",
-        "comment": "a common misconception is that the student can say 6.2 which has 6 tens"
+        "comment": null,
+        "component": {
+          "name": "GF_1",
+          "size": {
+            "width": 105,
+            "height": 47
+          },
+          "position": {
+            "top": 541,
+            "left": 242
+          },
+          "component_type": "readonly"
+        }
       }
     ]
   }
