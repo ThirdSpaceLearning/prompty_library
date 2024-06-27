@@ -10,12 +10,27 @@
         "component": {
           "name": "plbox",
           "size": {
-            "width": 49,
-            "height": 93
+            "width": 454,
+            "height": 469.000732421875
           },
           "position": {
-            "top": 416,
-            "left": 656
+            "top": 258,
+            "left": 521
+          },
+          "component_type": "readonly"
+        }
+      },
+      {
+        "shape": "ractangle",
+        "component": {
+          "name": "plbox",
+          "size": {
+            "width": 454,
+            "height": 469.000732421875
+          },
+          "position": {
+            "top": 258,
+            "left": 521
           },
           "component_type": "readonly"
         }
