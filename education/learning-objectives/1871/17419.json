@@ -29,7 +29,38 @@
     "Visual Aid": "A question asking to decide if seven tenths or 6 hundreths is bigger",
     "Support Questions": [],
     "Write": [],
-    "Highlight": [],
+    "Highlight": [
+      {
+        "type": "ellispe",
+        "component": {
+          "name": "PL_1",
+          "size": {
+            "width": 49,
+            "height": 93
+          },
+          "position": {
+            "top": 416,
+            "left": 656
+          },
+          "component_type": "readonly"
+        }
+      },
+      {
+        "type": "rectangle",
+        "component": {
+          "name": "PL_1",
+          "size": {
+            "width": 49,
+            "height": 93
+          },
+          "position": {
+            "top": 416,
+            "left": 656
+          },
+          "component_type": "readonly"
+        }
+      }
+    ],
     "Correct Answers": [
       {
         "value": "7/10",
