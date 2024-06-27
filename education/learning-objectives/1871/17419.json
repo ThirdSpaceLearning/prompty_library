@@ -6,7 +6,7 @@
     "Write": [],
     "Highlight": [
       {
-        "shape": "ellispe",
+        "shape": "ellipse",
         "component": {
           "name": "PL_1",
           "size": {
