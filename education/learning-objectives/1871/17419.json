@@ -48,14 +48,14 @@
       {
         "type": "rectangle",
         "component": {
-          "name": "PL_1",
+          "name": "PL_2",
           "size": {
-            "width": 49,
+            "width": 63,
             "height": 93
           },
           "position": {
             "top": 416,
-            "left": 656
+            "left": 789
           },
           "component_type": "readonly"
         }
