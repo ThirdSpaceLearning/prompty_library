@@ -6,24 +6,6 @@
     "Write": [],
     "Highlight": [
       {
-        "shape": "rectangle",
-        "component": {
-          "name": "plbox",
-          "size": {"width": 454, "height": 469.000732421875},
-          "position": {"top": 516, "left": 570},
-          "component_type": "readonly"
-        }
-      },
-      {
-        "shape": "ellipse",
-        "component": {
-          "name": "plbox",
-          "size": {"width": 454, "height": 469.000732421875},
-          "position": {"top": 516, "left": 570},
-          "component_type": "readonly"
-        }
-      },
-      {
         "shape": "ellipse",
         "component": {
           "name": "plbox",
