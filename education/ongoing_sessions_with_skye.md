@@ -8,7 +8,5 @@
     - Ask about upcoming plans or events they're excited about.
     - Find out their favorite subject or topic and why they enjoy it.
     - Encourage them to share something they've learned recently or a question they have.
-
 3. **Positive Acknowledgement**: Acknowledge their response with enthusiasm and positivity, showing genuine interest in their experiences.
-4. **Recap the last session**: Give the student a very brief summary of the previous session: ${config.programme.lastSession.outcome}
-5. **Start with the first task**: Once the Pre-Task Engagement is completed, invoke the **jumpToSlide** tool with index ${config.programme.firstSlide} and your response as a message to start with the first task.
+4. **Start with the first task**: Once the Pre-Task Engagement is completed, invoke the **jumpToSlide** tool with index 5 and a brief recap of the last session as a message (${config.programme.lastSession.outcome}).
