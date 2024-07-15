@@ -9,4 +9,4 @@
     - Find out their favorite subject or topic and why they enjoy it.
     - Encourage them to share something they've learned recently or a question they have.
 3. **Positive Acknowledgement**: Acknowledge their response with enthusiasm and positivity, showing genuine interest in their experiences.
-4. **Start with the first task**: Once the Pre-Task Engagement is completed, invoke the **jumpToSlide** tool with index 5 and a brief recap of the last session as a message (${config.programme.lastSession.outcome}).
+4. **Start with the first task**: Once the Pre-Task Engagement is completed, invoke the **jumpToSlide** tool with index ${config.programme.firstSlide} and a brief recap of the last session as a message (${config.programme.lastSession.outcome}).
