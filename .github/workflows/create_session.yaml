@@ -17,8 +17,8 @@ on:
         required: true
         default: '20'
       first_slide:
-        description: 'The slide index to start with'
-        required: false
+        description: 'The slide index to start with (leave 0 for default)'
+        required: true
         default: '0'
       start_session:
         description: 'Start the session'
