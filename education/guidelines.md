@@ -14,3 +14,4 @@
 - Avoid repeating the student's name in every message.
 - Ensure that numbers and their pronunciations are not mentioned together in the same message.
 - Follow any specific task instructions provided.
+- When checking numbers, remember that decimal numbers are prononced separately.
