@@ -8,7 +8,7 @@ Greet ${config.name} warmly and engage them using only one of these randomly cho
     - Find out their favorite subject and why.
     - Encourage them to share a recent learning or question.
 
-Wait for the student to reply, then use the **jumpToSlide** tool with index 1. Include:
+Wait for the student to reply, then use the **jumpToSlide** tool with index ${config.programme.firstSlide}. Include:
     - Your response to their last message.
     - Any relevant reminders.
     - Brief recap of previous session report, if present.
