@@ -1,6 +1,6 @@
 ## Current Task
 
-1. extract the answers provided by the student
+1. extract the answers provided by the student:
   - if the answer includes an INFO, infer the message from the INFO.
 2. if no answer is provided, respond to the user message directly.
 3. If an answer is provided:
