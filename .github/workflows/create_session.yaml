@@ -16,6 +16,10 @@ on:
         description: 'The session max duration'
         required: true
         default: '20'
+      first_slide:
+        description: 'The slide index to start with (leave 0 for default)'
+        required: true
+        default: '0'
       start_session:
         description: 'Start the session'
         required: false
@@ -29,7 +33,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.ref }}
 
@@ -68,7 +72,7 @@ jobs:
       - name: Start Step Function Execution
         id: start_execution
         run: |
-          result=$(aws stepfunctions start-execution --state-machine-arn ${{ env.TEST_SESSION_STATE_MACHINE_ARN }} --input "{\"time\":\"${{ env.NOW }}\",\"number_of_students\":1,\"prompt_version\":\"${{ env.BRANCH_NAME }}\",\"start_session\":${{ env.START_SESSION }},\"tutor_id\":${{ env.AI_TUTOR_ID }},\"school_id\":${{ github.event.inputs.school_id }},\"duration\":${{ github.event.inputs.duration }},\"student_ids\":[${{ github.event.inputs.student_id }}],\"lesson_ids\":[\"${{ github.event.inputs.lesson_id }}\"]}")
+          result=$(aws stepfunctions start-execution --state-machine-arn ${{ env.TEST_SESSION_STATE_MACHINE_ARN }} --input "{\"time\":\"${{ env.NOW }}\",\"number_of_students\":1,\"prompt_version\":\"${{ env.BRANCH_NAME }}\",\"start_session\":${{ env.START_SESSION }},\"tutor_id\":${{ env.AI_TUTOR_ID }},\"school_id\":${{ github.event.inputs.school_id }},\"duration\":${{ github.event.inputs.duration }},\"first_slide\":${{ github.event.inputs.first_slide }},\"student_ids\":[${{ github.event.inputs.student_id }}],\"lesson_ids\":[\"${{ github.event.inputs.lesson_id }}\"]}")
           executionArn=$(echo $result | jq -r '.executionArn')
           echo "EXECUTION_ARN=$executionArn" >> $GITHUB_ENV
       - name: Wait for Execution Result

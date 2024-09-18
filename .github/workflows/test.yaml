@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - shell: pwsh
@@ -30,7 +30,7 @@ jobs:
           echo "source_diff=$SourceDiff" >> $env:GITHUB_OUTPUT
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: '20' # Specify the Node.js version here
 
