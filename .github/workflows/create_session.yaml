@@ -41,10 +41,14 @@ jobs:
         id: branch_name
         run: |
           echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
-          echo "AI_TUTOR_ID=${{ secrets.AI_TUTOR_ID }}" >> $GITHUB_ENV
+          
           echo "START_SESSION=${{ github.event.inputs.start_session == 'yes' }}" >> $GITHUB_ENV
           echo "NOW=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> $GITHUB_ENV
-
+      
+      - name: Set tutor_id for main branch
+        if: env.BRANCH_NAME == 'main'
+        run: echo "AI_TUTOR_ID=${{ secrets.PROD_AI_TUTOR_ID }}" >> $GITHUB_ENV
+      
       - name: Set State machine for main branch
         if: env.BRANCH_NAME == 'main'
         run: echo "TEST_SESSION_STATE_MACHINE_ARN=${{ secrets.PROD_TEST_SESSION_STATE_MACHINE_ARN }}" >> $GITHUB_ENV
@@ -57,7 +61,11 @@ jobs:
           role-session-name: prompt-library-action
           aws-region: eu-west-1
 
-      - name: Set State machine for main branch
+      - name: Set tutor_id for non-main branch
+        if: env.BRANCH_NAME != 'main'
+        run: echo "AI_TUTOR_ID=${{ secrets.AI_TUTOR_ID }}" >> $GITHUB_ENV
+
+      - name: Set State machine for non-main branch
         if: env.BRANCH_NAME != 'main'
         run: echo "TEST_SESSION_STATE_MACHINE_ARN=${{ secrets.NONPROD_TEST_SESSION_STATE_MACHINE_ARN }}" >> $GITHUB_ENV
 
