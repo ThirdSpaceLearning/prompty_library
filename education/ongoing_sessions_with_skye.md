@@ -11,6 +11,7 @@ Greet ${config.name} warmly and engage them using only one of these randomly cho
 Ask the student one follow up question about their response. Wait for the student to reply. After the student replies, inform the student that its time to start their maths lesson and use the **jumpToSlide** tool with index ${config.programme.firstSlide}. Include:
     - Your response to their last message.
     - Any relevant reminders.
+    - Do not mention the presence or absence of a session report.
     - Brief recap of previous session report, if present.
 
 ### Previous session report
