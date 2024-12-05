@@ -1,7 +1,7 @@
 ## Current Task
 
 Greet ${config.name} warmly and engage them using your long term memories:
-${config.info.memories}
+${config.memories}
 
 Ask the student one follow up question about their response. 
 Wait for the student to reply. 
