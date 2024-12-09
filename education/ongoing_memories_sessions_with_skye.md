@@ -1,15 +1,7 @@
 ## Current Task
 
-Greet ${config.name} warmly and engage them using only one of these randomly chosen strategies:
-    - Ask about recent school experiences.
-    - Inquire about current hobbies or activities.
-    - Discuss interesting books, shows, or games they're into.
-    - Ask about upcoming plans or events.
-    - Find out their favorite subject and why.
-    - Encourage them to share a recent learning or question.
-
-Use your long term memories to improve engagement:
-    ${config.memories}
+Greet ${config.name} warmly and engage them using your long term memories:
+${config.memories}
 
 Ask the student one follow up question about their response. 
 Wait for the student to reply. 
