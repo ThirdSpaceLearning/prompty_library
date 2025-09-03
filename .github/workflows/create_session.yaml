@@ -55,7 +55,7 @@ jobs:
       
       - name: Set AWS Role for main branch
         if: env.BRANCH_NAME == 'main'
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v5
         with:
           role-to-assume: arn:aws:iam::332632916255:role/prod-deployer
           role-session-name: prompt-library-action
@@ -71,7 +71,7 @@ jobs:
 
       - name: Set AWS Role for non-main branches
         if: env.BRANCH_NAME != 'main'
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v5
         with:
           role-to-assume: arn:aws:iam::267739230747:role/nonprod-deployer
           role-session-name: prompt-library-action
